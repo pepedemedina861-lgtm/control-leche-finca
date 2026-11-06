@@ -1,12 +1,20 @@
 {
-  "name": "Control de Leche - Finca",
-  "short_name": "Control Leche",
+  "name": "Granja El Olivo - Control Lechero",
+  "short_name": "El Olivo",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f5f7f2",
-  "theme_color": "#245c45",
+  "background_color": "#f5f7f0",
+  "theme_color": "#14532d",
   "icons": [
-    {"src":"icon-192.png","sizes":"192x192","type":"image/png"},
-    {"src":"icon-512.png","sizes":"512x512","type":"image/png"}
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ]
 }

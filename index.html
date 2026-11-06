@@ -1,65 +1,82 @@
 <!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#245c45">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="Control de Leche">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icon-192.png">
-  <link rel="stylesheet" href="styles.css">
-  <title>Control de Leche</title>
-</head>
-<body>
-<header class="top">
-  <div class="brand"><div class="logo">🥛</div><div><h1>Control de Leche</h1><p>Producción e ingresos de tu finca</p></div></div>
-  <span class="offline">● Guarda en este iPhone</span>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14532d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Granja El Olivo">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png"><link rel="stylesheet" href="styles.css">
+<title>Granja El Olivo</title></head><body>
+<header class="hero">
+  <div class="brand"><div class="brandmark">🐄</div><div><div class="brandname">Granja <b>El Olivo</b></div><p>Control de producción lechera</p></div></div>
+  <div class="hero-bottom"><span>Gestión diaria de tu ganado</span><span class="offline">● Modo local</span></div>
 </header>
 <main>
-  <section class="summary">
-    <article><span>Litros hoy</span><strong id="todayLiters">0 L</strong></article>
-    <article><span>Ingresos hoy</span><strong id="todayMoney">$0</strong></article>
-    <article><span>Litros del mes</span><strong id="monthLiters">0 L</strong></article>
-    <article><span>Ingresos del mes</span><strong id="monthMoney">$0</strong></article>
-  </section>
+<nav class="tabs" aria-label="Secciones">
+<button class="tab active" data-view="inicio">⌂ <span>Inicio</span></button>
+<button class="tab" data-view="vacas">🐄 <span>Vacas</span></button>
+<button class="tab" data-view="leche">＋ <span>Registrar</span></button>
+<button class="tab" data-view="reportes">▥ <span>Reportes</span></button>
+</nav>
 
-  <section class="panel">
-    <div class="section-head"><div><h2>Registrar producción</h2><p>Ingresa los litros y el precio de venta.</p></div><span class="drop">＋</span></div>
-    <form id="milkForm">
-      <label>Fecha
-        <input type="date" id="date" required>
-      </label>
-      <div class="two">
-        <label>Litros producidos
-          <input type="number" id="liters" min="0.01" step="0.01" inputmode="decimal" placeholder="Ej. 85" required>
-        </label>
-        <label>Precio por litro (COP)
-          <input type="number" id="price" min="0" step="1" inputmode="numeric" placeholder="Ej. 2200" required>
-        </label>
-      </div>
-      <label>Detalle (opcional)
-        <input type="text" id="note" maxlength="100" placeholder="Ej. Producción de la mañana">
-      </label>
-      <div class="calc"><span>Total estimado</span><strong id="preview">$0</strong></div>
-      <button class="primary" type="submit">Guardar registro</button>
-    </form>
-  </section>
-
-  <section class="panel">
-    <div class="section-head"><div><h2>Historial de producción</h2><p>Consulta, edita o elimina registros.</p></div></div>
-    <div class="filters">
-      <input type="month" id="monthFilter" aria-label="Filtrar por mes">
-      <button class="secondary" id="exportBtn" type="button">Exportar CSV</button>
+<section id="view-inicio" class="view">
+  <div class="section-title"><div><h1>Resumen de la granja</h1><p id="todayLabel"></p></div><span class="pill">El Olivo</span></div>
+  <div class="stats">
+    <article><small>Litros de hoy</small><strong id="dashLiters">0 L</strong></article>
+    <article><small>Ingresos de hoy</small><strong id="dashMoney">$0</strong></article>
+    <article><small>Vacas registradas</small><strong id="dashCows">0</strong></article>
+    <article><small>En producción</small><strong id="dashActive">0</strong></article>
+  </div>
+  <div class="panel"><div class="panelhead"><div><h2>Accesos rápidos</h2><p>Administra tu producción</p></div></div>
+    <div class="quick">
+      <button data-go="vacas"><span>🐄</span><b>Registrar vaca</b><small>Agregar o actualizar ganado</small></button>
+      <button data-go="leche"><span>🥛</span><b>Registrar leche</b><small>Litros y precio diario</small></button>
+      <button data-go="reportes"><span>📊</span><b>Ver reportes</b><small>Producción e ingresos</small></button>
     </div>
-    <div id="records" class="records"></div>
-    <div class="empty" id="empty">Todavía no hay registros. Agrega tu primera producción.</div>
-    <div class="totals" id="filteredTotals"></div>
-  </section>
-  <p class="privacy">Tus registros se guardan localmente en este dispositivo. Exporta una copia de seguridad periódicamente.</p>
+  </div>
+  <div class="panel"><div class="panelhead"><div><h2>Últimos registros</h2><p>Actividad reciente de la finca</p></div></div><div id="recentRecords" class="list"></div><div id="recentEmpty" class="empty">Aún no hay producción registrada.</div></div>
+</section>
+
+<section id="view-vacas" class="view hidden">
+ <div class="section-title"><div><h1>Vacas</h1><p>Registra y controla el estado del ganado.</p></div><button class="primary small" id="addCowBtn">＋ Nueva vaca</button></div>
+ <div class="stats compact"><article><small>Total de vacas</small><strong id="cowTotal">0</strong></article><article><small>En producción</small><strong id="cowProducing">0</strong></article><article><small>Otros estados</small><strong id="cowOther">0</strong></article></div>
+ <input id="cowSearch" class="search" placeholder="Buscar por código o nombre…">
+ <div id="cowList" class="list"></div><div id="cowEmpty" class="empty">No hay vacas registradas. Pulsa “Nueva vaca”.</div>
+</section>
+
+<section id="view-leche" class="view hidden">
+ <div class="section-title"><div><h1>Control de leche</h1><p>Registra la producción diaria por vaca.</p></div></div>
+ <form id="milkForm" class="panel form">
+  <label>Fecha<input type="date" id="milkDate" required></label>
+  <label>Vaca<select id="milkCow" required></select></label>
+  <div class="two">
+   <label>Litros producidos<input type="number" id="milkLiters" min="0.01" step="0.01" inputmode="decimal" placeholder="Ej. 18.5" required></label>
+   <label>Precio por litro (COP)<input type="number" id="milkPrice" min="0" step="1" inputmode="numeric" placeholder="Ej. 2200" required></label>
+  </div>
+  <label>Observaciones<input id="milkNote" maxlength="120" placeholder="Ej. Ordeño de la mañana"></label>
+  <div class="totalbox"><span>Total del registro</span><strong id="milkTotal">$0</strong></div>
+  <button class="primary full" type="submit">Guardar producción</button>
+ </form>
+ <div class="panel"><div class="panelhead"><div><h2>Registros recientes</h2><p>Producción ingresada</p></div></div><div id="milkRecords" class="list"></div><div id="milkEmpty" class="empty">Todavía no hay registros.</div></div>
+</section>
+
+<section id="view-reportes" class="view hidden">
+ <div class="section-title"><div><h1>Reportes</h1><p>Consulta litros e ingresos.</p></div></div>
+ <div class="panel"><label>Mes del reporte<input type="month" id="reportMonth"></label>
+  <div class="stats compact"><article><small>Litros del mes</small><strong id="reportLiters">0 L</strong></article><article><small>Ingresos del mes</small><strong id="reportMoney">$0</strong></article></div>
+  <div class="panelhead"><div><h2>Producción por vaca</h2></div></div><div id="cowReport" class="list"></div>
+  <button class="secondary full" id="exportBtn">⇩ Exportar registros CSV</button>
+ </div>
+ <p class="hint">Exporta periódicamente una copia de tus registros para conservarlos.</p>
+</section>
 </main>
-<footer>CONTROL DE LECHE · FINCA</footer>
-<script src="app.js"></script>
-</body>
-</html>
+
+<dialog id="cowDialog"><form id="cowForm" method="dialog" class="dialogform">
+ <div class="dialoghead"><h2 id="cowDialogTitle">Nueva vaca</h2><button type="button" class="close" id="closeCow">×</button></div>
+ <input type="hidden" id="cowId">
+ <label>Código / arete<input id="cowCode" placeholder="Ej. V-001" required maxlength="25"></label>
+ <label>Nombre<input id="cowName" placeholder="Ej. Luna" required maxlength="50"></label>
+ <label>Raza<input id="cowBreed" placeholder="Ej. Holstein" maxlength="40"></label>
+ <label>Estado<select id="cowStatus"><option>En producción</option><option>Gestante</option><option>Seca</option><option>En tratamiento</option><option>Vendida</option></select></label>
+ <label>Fecha de ingreso<input type="date" id="cowEntry"></label>
+ <label>Notas<input id="cowNotes" maxlength="120" placeholder="Información adicional (opcional)"></label>
+ <button class="primary full" type="submit">Guardar vaca</button>
+ </form></dialog>
+<script src="app.js"></script></body></html>

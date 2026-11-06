@@ -1,29 +1,28 @@
-# Control de Leche - Finca
+# Granja El Olivo - Control de Producción Lechera
 
-Aplicación web progresiva (PWA) para registrar litros de leche diarios y precio por litro.
+Aplicación web progresiva para administrar vacas y registrar producción diaria de leche.
 
 ## Funciones
-- Registro por fecha, litros, precio por litro y detalle opcional.
-- Cálculo automático del valor total.
-- Resumen del día y del mes.
-- Historial con filtro mensual, edición y eliminación.
-- Exportación CSV compatible con Excel.
+- Crear, editar y eliminar vacas.
+- Código/arete, nombre, raza, estado, fecha de ingreso y notas.
+- Estados: En producción, Gestante, Seca, En tratamiento y Vendida.
+- Registrar fecha, vaca, litros, precio por litro y observaciones.
+- Calcular automáticamente el valor de cada registro.
+- Resumen diario, reportes mensuales y producción por vaca.
+- Exportar el historial a CSV para abrirlo con Excel.
+- Diseño adaptable a iPhone y escritorio.
 - Funciona sin conexión después de la primera carga.
-- Los datos se guardan en el almacenamiento local del dispositivo.
 
 ## Publicar en GitHub Pages
-1. Crea un repositorio nuevo en GitHub.
-2. Sube todos los archivos de esta carpeta a la raíz del repositorio.
-3. Entra a **Settings → Pages**.
-4. En **Build and deployment**, selecciona **Deploy from a branch**.
-5. Selecciona la rama `main` y la carpeta `/ (root)`, y guarda.
-6. Espera a que GitHub Pages publique el sitio.
+1. Crea un repositorio público llamado `granja-el-olivo`.
+2. Sube todos los archivos de esta carpeta directamente a la raíz del repositorio.
+3. En GitHub abre Settings → Pages.
+4. En Build and deployment selecciona Deploy from a branch.
+5. Selecciona `main` y `/ (root)`, luego Save.
+6. Espera la publicación y abre el enlace HTTPS en Safari.
 
 ## Instalar en iPhone
-1. Abre el enlace HTTPS de GitHub Pages en Safari.
-2. Pulsa el botón **Compartir**.
-3. Selecciona **Añadir a pantalla de inicio**.
-4. Pulsa **Añadir**.
+Safari → Compartir → Añadir a pantalla de inicio.
 
-## Importante
-Los datos quedan guardados en el iPhone/navegador donde se registran; no se sincronizan automáticamente entre dispositivos ni con GitHub. Usa **Exportar CSV** para guardar una copia de seguridad. No borres los datos del sitio sin exportarlos antes.
+## Datos y respaldo
+Los datos se guardan en el almacenamiento local del navegador/dispositivo. No se sincronizan automáticamente entre dispositivos ni se guardan en GitHub. Exporta CSV periódicamente. Para compartir datos entre varios teléfonos se requiere conectar una base de datos en la nube.
