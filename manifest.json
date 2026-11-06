@@ -1,5 +1,5 @@
 {
-  "name": "Granja El Olivo - Control Lechero",
+  "name": "Granja El Olivo - Control Ganadero y Lechero",
   "short_name": "El Olivo",
   "start_url": "./",
   "display": "standalone",
@@ -16,5 +16,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "description": "Control de vacas, estados y producción diaria de leche."
 }

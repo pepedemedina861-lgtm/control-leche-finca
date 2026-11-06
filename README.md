@@ -1,28 +1,24 @@
-# Granja El Olivo - Control de Producción Lechera
+# Granja El Olivo — App para iPhone
 
-Aplicación web progresiva para administrar vacas y registrar producción diaria de leche.
+Aplicación web progresiva (PWA) para instalar en iPhone desde Safari.
 
-## Funciones
-- Crear, editar y eliminar vacas.
-- Código/arete, nombre, raza, estado, fecha de ingreso y notas.
+## Incluye
+- Logo e icono de Granja El Olivo.
+- Registro, edición y eliminación de vacas.
 - Estados: En producción, Gestante, Seca, En tratamiento y Vendida.
-- Registrar fecha, vaca, litros, precio por litro y observaciones.
-- Calcular automáticamente el valor de cada registro.
-- Resumen diario, reportes mensuales y producción por vaca.
-- Exportar el historial a CSV para abrirlo con Excel.
+- Registro diario de litros, precio por litro y observaciones.
+- Resumen de producción e ingresos, reportes mensuales por vaca.
+- Exportación CSV.
 - Diseño adaptable a iPhone y escritorio.
-- Funciona sin conexión después de la primera carga.
 
 ## Publicar en GitHub Pages
-1. Crea un repositorio público llamado `granja-el-olivo`.
+1. Crea un repositorio público.
 2. Sube todos los archivos de esta carpeta directamente a la raíz del repositorio.
-3. En GitHub abre Settings → Pages.
-4. En Build and deployment selecciona Deploy from a branch.
-5. Selecciona `main` y `/ (root)`, luego Save.
-6. Espera la publicación y abre el enlace HTTPS en Safari.
+3. Settings → Pages → Deploy from a branch → `main` → `/ (root)` → Save.
+4. Espera la publicación.
 
 ## Instalar en iPhone
-Safari → Compartir → Añadir a pantalla de inicio.
+Abre el enlace HTTPS en Safari → Compartir → Añadir a pantalla de inicio.
 
-## Datos y respaldo
-Los datos se guardan en el almacenamiento local del navegador/dispositivo. No se sincronizan automáticamente entre dispositivos ni se guardan en GitHub. Exporta CSV periódicamente. Para compartir datos entre varios teléfonos se requiere conectar una base de datos en la nube.
+## Almacenamiento
+Los registros se guardan localmente en el navegador/dispositivo. No se sincronizan entre dispositivos. Exporta CSV como respaldo. Para varios usuarios/dispositivos se requiere base de datos en la nube.
